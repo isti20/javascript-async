@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>AJAX</title>
+  </head>
+  <body>
+    <h1 id="response"></h1>
+    <script>
+      // membuat ajax
+      const ajax = new XMLHttpRequest();
+      ajax.open("GET", "api/hello.json");
+
+      // mendapatkan informasi AJAX menggunakan AJAX Callback
+      ajax.addEventListener("load", function () {
+        // mengambil data dari server menggunakan property responseText
+        const json = JSON.parse(ajax.responseText);
+
+        const header = document.getElementById("response");
+        header.textContent = json.response;
+      });
+      ajax.send();
+    </script>
+  </body>
+</html>
